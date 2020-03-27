@@ -9,7 +9,7 @@
     <meta name="description" content="Myse1f Blog">
     <meta name="author" content="Myse1f">
     <meta name="keyword" content="myse1f blog">
-    <link rel="canonical" href="https://myse1f.github.io/">
+    <link rel="canonical" href="https://myse1f.github.io/tags/以太坊/">
     <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
     <link rel="alternate" type="application/atom+xml" title="Myse1f Blog" href="/atom.xml">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -109,7 +109,7 @@
 <!-- hack iOS CSS :active style -->
 <body ontouchstart="" class="animated fadeIn">
 <header>
-  <nav class="navbar navbar-default header-navbar" id="nav-top" data-ispost = "false" data-istags="false" data-ishome = "true" >
+  <nav class="navbar navbar-default header-navbar" id="nav-top" data-ispost = "false" data-istags="true" data-ishome = "false" >
     <div class="container-fluid">
       <div class="navbar-header page-scroll">
         <button type="button" class="navbar-toggle" data-toggle="collapse" aria-expanded="false"  data-target="#website_navbar">
@@ -150,143 +150,92 @@
 
 
   
+    <style>
+       .intro-header {
+          background-image: url('/img/sky-clouds-moon-horizon.jpg?h=350&amp;auto=compress&amp;cs=tinysrgb');
+      }
+    </style>
+
+    <div class="intro-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                    <div class="site-heading">
+                        <h1>Untitled</h1>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
 </header>
 
 
 <!-- Main Content -->
-<!-- index.ejs -->
-<article class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
-    
-        <div class="row">
-            <header class="intro-header">
-                <div class="container">
-                    <div class="site-heading text-center">
-                        <div class="about-me">
-                            <!--Sidebar about me: mobile header-->
-                            
-                                <img src="https://avatars3.githubusercontent.com/u/28757057?s=460&amp;v=4" class="avatar">
-                            
-                            <h5>Myse1f</h5>
-                            <p>zju student</p>
-                        </div>
-                    </div>
-                </div>
-            </header>
-        </div>
-        
-</article>
-<div class="container homepage">
+<article class="container">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
-          
-            <div class="post-preview "
-     style="background-image: url('/img/sky-clouds-moon-horizon.jpg?h=350&auto=compress&cs=tinysrgb')">
-    <a href="/mitigate-lock-competition/">
-        <h2 class="post-title">
-            Java并发——减少锁的竞争
-        </h2>
-        
-        <div class="post-meta">
-          <span>Mar 27, 2020</span>
-          
-        </div>
-        <div class="post-content-preview">
-            <p>
-                减少锁竞争在并发程序中，可伸缩性的最主要威胁就是独占方式的资源锁。锁的请求频率和持有锁的时间的乘积决定了发生竞争的可能性。有三种方式可以降低锁的竞争：
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div id='tag_cloud'>
+                
+                  <a href="#java并发编程" title="java并发编程" rel="1">java并发编程</a>
+                
+                  <a href="#IPFS" title="IPFS" rel="1">IPFS</a>
+                
+                  <a href="#以太坊" title="以太坊" rel="1">以太坊</a>
+                
+            </div>
 
-减少锁的持有时间
-降低锁的请求频率
-使用带有协调机制的独占锁
-
-缩小锁的范围缩小锁的范围可以减少锁的持有时间，比如将一些与锁无关的代码移出同步..
-            </p>
-        </div>
-    </a>
-</div>
-<hr>
-
-          
-            <div class="post-preview "
-     style="background-image: url('/ipfs-eth-blog-1/cover_img.png')">
-    <a href="/ipfs-eth-blog-1/">
-        <h2 class="post-title">
-            使用IPFS结合以太坊进行博客系统开发（一）
-        </h2>
-        
-        <div class="post-meta">
-          <span>Mar 26, 2020</span>
-          
-        </div>
-        <div class="post-content-preview">
-            <p>
-                IPFS ETHEREUM BLOG简介基于以太坊和IPFS实现的博客系统。在IPFS上使用DAG存储博客文章，将根hash值存在以太坊上。
-合约使用truffle开发和部署，前端使用的是react框架。
-网页前端一般需要配合metamask插件使用。
-开发使用git下载仓库
-1git clon..
-            </p>
-        </div>
-    </a>
-</div>
-<hr>
-
-          
-          <ul class="pager">
-    
-    
-</ul>
-
-        </div>
-        <!-- sidebar-profile.ejs -->
-<div class="
-        col-lg-3 col-lg-offset-0
-        col-md-3 col-md-offset-0
-        col-sm-12
-        col-xs-12
-        sidebar-container
-    ">
-    <section class="visible-md visible-lg" style="padding: 0 18px">
-        <div class="short-about">
             
-                <img src="https://avatars3.githubusercontent.com/u/28757057?s=460&amp;v=4" class="avatar">
+              <div class="one-tag-list">
+                  <div class="fa fa-tag tag-icon" id="java并发编程">
+                      <span class="tag-text">java并发编程</span>
+                  </div>
+                  
+                    <div class="post-preview">
+                        <a href="/mitigate-lock-competition/">
+                            <h2 class="tag-post-title">Java并发——减少锁的竞争</h2>
+                            
+                        </a>
+                    </div>
+                    <hr>
+                
+              </div>
             
-            <h3>Myse1f</h3>
+              <div class="one-tag-list">
+                  <div class="fa fa-tag tag-icon" id="IPFS">
+                      <span class="tag-text">IPFS</span>
+                  </div>
+                  
+                    <div class="post-preview">
+                        <a href="/ipfs-eth-blog-1/">
+                            <h2 class="tag-post-title">使用IPFS结合以太坊进行博客系统开发（一）</h2>
+                            
+                        </a>
+                    </div>
+                    <hr>
+                
+              </div>
             
-                <p>zju student</p>
-            
-            <hr>
-            <ul class="list-inline">
+              <div class="one-tag-list">
+                  <div class="fa fa-tag tag-icon" id="以太坊">
+                      <span class="tag-text">以太坊</span>
+                  </div>
+                  
+                    <div class="post-preview">
+                        <a href="/ipfs-eth-blog-1/">
+                            <h2 class="tag-post-title">使用IPFS结合以太坊进行博客系统开发（一）</h2>
+                            
+                        </a>
+                    </div>
+                    <hr>
                 
-                
-                
-
-                
-
-                
-
-                
-                <li>
-                    <a target="_blank" href="https://github.com/myse1f">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                    </a>
-                </li>
-                
-
-                
-
-                
-
-            </ul>
+              </div>
             
         </div>
-    </section>
-</div>
-
     </div>
-</div>
+</article>
 
 <!-- Footer -->
 <!-- footer.ejs -->
