@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- layout.ejs-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Myse1f Blog">
+    <meta name="author" content="Myse1f">
+    <meta name="keyword" content="myse1f blog">
+    <link rel="canonical" href="https://myse1f.github.io/ipfs-eth-blog-4/">
+    <link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-person-128.png">
+    <link rel="alternate" type="application/atom+xml" title="Myse1f Blog" href="/atom.xml">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <title>
+        
+        使用IPFS结合以太坊进行博客系统开发（四）｜Myse1f Blog
+        
+    </title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    
+<link rel="stylesheet" href="/css/main.css">
+
+
+    
+      <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+      
+<link rel="stylesheet" href="/css/highlight.css">
+
+    
+
+    
+      <script id="dsq-count-scr" src="//https-myse1f-github-io.disqus.com/count.js" async></script>
+    
+
+
+    
+      <meta name="google-site-verification" content="g5BseDGQ1hWwdbBPJLKNfbC6xNOaM3X4LnKEMAvx_tI" />
+    
+
+    
+
+    
+
+
+    
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+    
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-38355881-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+
+
+
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- user customization -->
+    
+<link rel="stylesheet" href="/css/arsnippet.css">
+
+    
+<script src="/js/arsnippet.css.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<style>
+    header.intro-header {
+        background-image: url('')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="" class="animated fadeIn">
+<header>
+  <nav class="navbar navbar-default header-navbar" id="nav-top" data-ispost = "true" data-istags="false" data-ishome = "false" >
+    <div class="container-fluid">
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" aria-expanded="false"  data-target="#website_navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <span class="navbar-brand animated pulse">
+          <a class="brand-logo" href="/">
+            Myse1f Blog
+          </a>
+        </span>
+      </div>
+
+      <div class="collapse navbar-collapse" id="website_navbar">
+          <ul class="nav navbar-nav navbar-right">
+              
+                <li>
+                  <a href="/">home</a>
+                </li>
+              
+                <li>
+                  <a href="/archives/">archives</a>
+                </li>
+              
+                <li>
+                  <a href="/tags/">tags</a>
+                </li>
+              
+                <li>
+                  <a href="/portfolio-slim/">projects</a>
+                </li>
+              
+          </ul>
+      </div>
+  </nav>
+
+
+  
+    <style>
+       .intro-header {
+          background-image: url('cover_img.png');
+      }
+    </style>
+
+    <div class="intro-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                    <div class="site-heading">
+                        <h1>使用IPFS结合以太坊进行博客系统开发（四）</h1>
+                        
+                        
+                          <span class="meta">
+                               <span class="meta-item">Author: Myse1f</span>
+                               <span class="meta-item">Date: Mar 30, 2020</span>
+                               
+                                 <span class="meta-item">Updated On: Apr 1, 2020</span>
+                               
+                          </span>
+                          <!-- <div class="tags text-center">
+                              Categories: 
+                          </div> -->
+                          <div class="tags text-center">
+                              Tags: 
+                              <a class="tag" href="/tags/#IPFS"
+                                 title="IPFS">IPFS</a>
+                              
+                              <a class="tag" href="/tags/#以太坊"
+                                 title="以太坊">以太坊</a>
+                              
+                          </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</header>
+
+
+<!-- Main Content -->
+<!-- post.ejs -->
+<article>
+    <div class="container">
+      <div class="col-lg-8 col-lg-offset-1 col-sm-9">
+          
+          
+          <h1 id="前端框架使用"><a href="#前端框架使用" class="headerlink" title="前端框架使用"></a>前端框架使用</h1><p>前端使用的是react框架，以及使用react-router来进行前端路由。这部分知识可以在官方文档上找到学习方法。样式使用的的bootstrap，具体模版为<a href="https://github.com/BlackrockDigital/startbootstrap-clean-blog" target="_blank" rel="noopener">here</a>。</p>
+<p>前端使用<a href="https://create-react-app.dev/" target="_blank" rel="noopener">create-react-app</a>脚手架进行初始化，scss进行样式编辑，可以使用<code>npm install --save node-sass</code>安装编译解析器。只需要在js文件中import相应scss文件即可。</p>
+<p>p.s react结合bootstrap写还是有些不方便，推荐使用react的各种样式组件，这里推荐<a href="https://ant.design/index-cn" target="_blank" rel="noopener">ant-design</a>的组件。</p>
+<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><p>React以组件的方式进行抽象，父组件可以对组件传入属性来控制组件的显示，组件内也拥有自己的state状态，通过内部的状态转换来更改组件的表现形式。</p>
+<h2 id="App组件"><a href="#App组件" class="headerlink" title="App组件"></a>App组件</h2><p>App组件是顶层组件，应用的整体框架视图。在ComponentDidMount的时候加载博客数据。</p>
+<p>子组件有NavBar和Footer，其余组件根据路由信息加载。</p>
+<h2 id="Navbar"><a href="#Navbar" class="headerlink" title="Navbar"></a>Navbar</h2><p>导航栏组件，设置<code>&lt;Link&gt;</code>路由跳转。分别是Home，About，Posts，New Post。</p>
+<h2 id="Header组件"><a href="#Header组件" class="headerlink" title="Header组件"></a>Header组件</h2><p>头部组件，可以设置背景图片和标题。</p>
+<h2 id="PostPreview组件"><a href="#PostPreview组件" class="headerlink" title="PostPreview组件"></a>PostPreview组件</h2><p>文章的预览组件，显示文章的标题、副标题和发布时间。</p>
+<h2 id="PostProfile组件"><a href="#PostProfile组件" class="headerlink" title="PostProfile组件"></a>PostProfile组件</h2><p>最近文章的预览，由一定数量的PostPreview组成。</p>
+<h2 id="Footer组件"><a href="#Footer组件" class="headerlink" title="Footer组件"></a>Footer组件</h2><p>底部组件，显示网站的信息，以及博主的社交网络信息。</p>
+<h2 id="Home组件"><a href="#Home组件" class="headerlink" title="Home组件"></a>Home组件</h2><p>主页信息，由头部组件和PostProfile构成。</p>
+<h2 id="About组件"><a href="#About组件" class="headerlink" title="About组件"></a>About组件</h2><p>有关博主的信息，包含头部组件。</p>
+<h2 id="Posts组件"><a href="#Posts组件" class="headerlink" title="Posts组件"></a>Posts组件</h2><p>展示所有文章的预览信息，由Header和一组PostPreiew构成。提供搜索器。</p>
+<p>这里自己设置分页器，比较麻烦，建议使用ant-design的分页组件。</p>
+<h2 id="Post组件"><a href="#Post组件" class="headerlink" title="Post组件"></a>Post组件</h2><p>文章展示，由Header组件和文章内容构成。</p>
+<h2 id="PostEditor组件"><a href="#PostEditor组件" class="headerlink" title="PostEditor组件"></a>PostEditor组件</h2><p>文章的编辑器，使用braft-editor开源组件构成关键编辑器。</p>
+<h2 id="NewPost组件"><a href="#NewPost组件" class="headerlink" title="NewPost组件"></a>NewPost组件</h2><p>发布新的文章。</p>
+<h2 id="EditPost组件"><a href="#EditPost组件" class="headerlink" title="EditPost组件"></a>EditPost组件</h2><p>编辑文章。</p>
+<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><p>使用<code>&lt;BrowserRouter&gt;</code>包装App组件即可对应用进行路由。React-Router的路由方式是根据路径加载相应的组件。</p>
+<table>
+<thead>
+<tr>
+<th>url</th>
+<th>Component</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/</td>
+<td>Home</td>
+</tr>
+<tr>
+<td>/home</td>
+<td>Home</td>
+</tr>
+<tr>
+<td>/about</td>
+<td>About</td>
+</tr>
+<tr>
+<td>/posts</td>
+<td>Posts</td>
+</tr>
+<tr>
+<td>/post/{postcid}</td>
+<td>Post</td>
+</tr>
+<tr>
+<td>/newPost</td>
+<td>NewPost</td>
+</tr>
+<tr>
+<td>/editPost/{postcid}</td>
+<td>EditPost</td>
+</tr>
+</tbody></table>
+<h1 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h1><ul>
+<li>加载App时，从以太坊合约中获取博客的根hash，然后从ipfs中读取所有博客文章的cid</li>
+<li>加载Home时，传入最近5篇文章的cid，获取文章的元信息</li>
+<li>加载Post时，从路径中获取对应的cid值，加载相应文章的内容</li>
+<li>加载Posts时，传入所有文章的cid值，获取文章的元信息</li>
+<li>加载EditPost时，传入相应文章的结构</li>
+</ul>
+<p>P.S React中，一般数据流都是从父组件传入子组件，但难免会需要从子组件将数据返回给父组件的情况。此时需要在父组件中定义相应的函数，通过props将函数传入子组件，在子组件相应位置调用函数，从而父组件能收到相应数据，比如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Father <span class="keyword">extends</span> React.Component &#123;</span><br><span class="line"></span><br><span class="line">    contructor(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.handleSon = <span class="keyword">this</span>.handleSon.bind(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleSon = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;someState&#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;Son handleSon=&#123;<span class="keyword">this</span>.handleSon&#125;&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Son <span class="keyword">extends</span> React.Component &#123;</span><br><span class="line"></span><br><span class="line">    someMethod = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.props.handleSon();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+          <hr>
+          <ul class="pager">
+              
+              
+              <li class="next">
+                  <a href="/ipfs-eth-blog-3/" data-toggle="tooltip" data-placement="top"
+                     title="使用IPFS结合以太坊进行博客系统开发（三）">Next Post&rarr;</a>
+              </li>
+              
+          </ul>
+        
+  <br>
+  
+  <!-- disqus start -->
+  <div class="comment">
+    <div id="disqus_thread"  class="disqus-thread"></div>
+      <script>
+      var disqus_shortname = 'https-myse1f-github-io';
+      
+      var disqus_url = 'https://myse1f.github.io/ipfs-eth-blog-4/';
+      
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+  </div>
+  <!-- disqus end -->
+  
+
+  
+  </div>
+
+
+        
+  <div class="hidden-xs col-sm-3 toc-col">
+    <div class="toc-wrap">
+        Table of Contents
+        
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前端框架使用"><span class="toc-number">1.</span> <span class="toc-text">前端框架使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组件"><span class="toc-number">2.</span> <span class="toc-text">组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#App组件"><span class="toc-number">2.1.</span> <span class="toc-text">App组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Navbar"><span class="toc-number">2.2.</span> <span class="toc-text">Navbar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Header组件"><span class="toc-number">2.3.</span> <span class="toc-text">Header组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PostPreview组件"><span class="toc-number">2.4.</span> <span class="toc-text">PostPreview组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PostProfile组件"><span class="toc-number">2.5.</span> <span class="toc-text">PostProfile组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Footer组件"><span class="toc-number">2.6.</span> <span class="toc-text">Footer组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Home组件"><span class="toc-number">2.7.</span> <span class="toc-text">Home组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#About组件"><span class="toc-number">2.8.</span> <span class="toc-text">About组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Posts组件"><span class="toc-number">2.9.</span> <span class="toc-text">Posts组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Post组件"><span class="toc-number">2.10.</span> <span class="toc-text">Post组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PostEditor组件"><span class="toc-number">2.11.</span> <span class="toc-text">PostEditor组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NewPost组件"><span class="toc-number">2.12.</span> <span class="toc-text">NewPost组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EditPost组件"><span class="toc-number">2.13.</span> <span class="toc-text">EditPost组件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#路由"><span class="toc-number">3.</span> <span class="toc-text">路由</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据流"><span class="toc-number">4.</span> <span class="toc-text">数据流</span></a></li></ol>
+        
+    </div>
+  </div>
+
+
+      </div>
+  </div>
+</article>
+
+<!-- Footer -->
+<!-- footer.ejs -->
+<footer>
+    <div class="text-center">
+      <ul class="list-inline">
+          
+          
+          
+
+          
+
+          
+
+          
+              <li>
+                  <a target="_blank"  href="https://github.com/myse1f">
+                      <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+              </li>
+          
+
+          
+
+          
+
+      </ul>
+     <div class="text-muted copyright">
+            &copy;
+            
+              2020
+            
+            
+              <i class="fa fa-heart"></i>
+            
+            Myse1f
+        <br>
+          
+              Powered by <a target="_blank" href="https://hexo.io">Hexo</a>
+          
+          
+            |
+          
+          
+              Theme - <a href="https://github.com/huyingjie/hexo-theme-A-RSnippet" target="_blank">A-RSnippet</a> v0.1.0
+          
+          
+      </div>
+    </div>
+</footer>
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+</body>
+
+</html>
